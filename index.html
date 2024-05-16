@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>디즈니 영화 추천기</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .movie-list {
+            list-style-type: none;
+            padding: 0;
+            text-align: left;
+        }
+
+        .movie-list li {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+
+        .movie-list li:hover {
+            background-color: #e9e9e9;
+            cursor: pointer;
+        }
+
+        .movie-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .movie-desc {
+            font-size: 1em;
+            color: #666;
+        }
+
+        #recommendBtn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #recommendBtn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>디즈니 영화 추천기</h1>
+    <ul class="movie-list" id="movieList">
+        <!-- 디즈니 영화는 여기에 동적으로 추가됩니다 -->
+    </ul>
+    <button id="recommendBtn">영화 추천받기</button>
+</div>
+
+<script>
+    // 디즈니 영화 목록
+    const movies = [
+        { title: "The Lion King", desc: "어린 사자 왕자가 자신의 왕국을 떠나 진정한 책임과 용기의 의미를 깨닫는 이야기." },
+        { title: "Frozen", desc: "왕국이 영원한 겨울에 갇힐 때, 안나는 그녀의 자매 엘사, 눈의 여왕을 찾으러 철저한 산악인 크리스토프와 함께 여정을 떠난다." },
+        { title: "Aladdin", desc: "종과 야심 차 있는 대왕 비자이어가 자신의 가장 깊은 소원을 이룰 수 있는 마법 램프를 두고 친절한 거리 거지와 힘 센 대왕 비자이어가 경쟁한다." },
+        { title: "Beauty and the Beast", desc: "아름다운 소녀 벨이 괴물로 변한 왕자와 그의 마법적인 성에 살고 있는 매혹적인 서사시." },
+        { title: "Cinderella", desc: "괴로움과 악당의 시련을 겪은 후 잭슨 비앙카가 자신의 특별한 신부로 살아남기 위해 마법사의 도움을 받는 이야기." },
+        { title: "Moana", desc: "대법은 제자리에서 나아가려고하는 소녀 모아나가 어느 날 과거로 떠나 세계를 구하러 나가는 이야기." },
+        { title: "Toy Story", desc: "토이 스토리는 앤디의 토이들이 자신이 속한 곳을 벗어나기 위해 모험을 떠나는 이야기." },
+        { title: "Finding Nemo", desc: "마블의 아버지인 네모는 아들 마블을 찾기 위해 해양 세계에서 모험을 떠난다." },
+        { title: "Zootopia", desc: "최신 도시 주식회사의 본부로 들어가 꿈에 가까운 역할을 맡은 토머스" },
+        { title: "Mulan", desc: "공주로 분장한 뮬란은 중국을 위해 싸우는 여성 전사로 변신한다." },
+        { title: "Tangled", desc: "방황한 남자는 꼬마 프리드로 바뀌고 경험 많은 범죄자인 플린 라이더와 함께 탈출 계획을 세운다." },
+        { title: "The Little Mermaid", desc: "아리엘은 자신의 바다 세계를 떠나 인간 세계에서 자신의 꿈을 찾는 여정에 나서며 어려움을 겪게 된다." },
+        { title: "Pocahontas", desc: "유럽인이 자신의 고향으로 오는 것을 막기 위해 자연과의 연결을 통해 자신의 조상과 문화를 지키는 포카혼타스." },
+        { title: "The Princess and the Frog", desc: "왕자가 개구리로 변하는 것은 전설에 의해 성취 할 수 있는 것으로 여겨지
+
